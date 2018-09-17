@@ -29,11 +29,17 @@ app.get('/students', function (req, res) {
     res.render('pages/students');
 });
 app.get('/subject', function (req, res) {
-    res.render('pages/subject');
+    connection.connect();
+    connection.query('select * from subjects', function (err, rows, fields) {
+        if (err) throw err
+        
+        res.render('pages/subjects',{subjects:rows})
+        console.log('The solution is: ', rows[0].solution)
+      })
+      connection.end()
 });
 
 
 console.log('App is running at http://localhost:8080');
 app.listen(8080);
 
-connection.end()
