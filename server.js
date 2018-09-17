@@ -9,31 +9,31 @@ var connection = mysql.createConnection({
   database : 'db140390'
 });
 
-connection.connect()
-connection.query('select * from students', function (err, rows, fields) {
-    if (err) throw err
-  
-    //console.log('The solution is: ', rows[0].solution)
-  })
-
-
-
 //app.use(express.static('static'));
 app.set('view engine', 'ejs');
 
 app.get('/', function (req, res) {
     res.render('pages/home');
 });
-
+app.get('/home', function (req, res) {
+    res.render('pages/home');
+});
 app.get('/students', function (req, res) {
-    res.render('pages/students');
+    connection.connect();
+    connection.query('select * from students', function (err, rows, fields) {
+        if (err) throw err
+        
+        res.render('pages/students',{students:rows})
+        console.log('The solution is: ', rows[0].solution)
+      })
+      connection.end()
 });
 app.get('/subject', function (req, res) {
     connection.connect();
     connection.query('select * from subjects', function (err, rows, fields) {
         if (err) throw err
         
-        res.render('pages/subjects',{subjects:rows})
+        res.render('pages/subject',{subject:rows})
         console.log('The solution is: ', rows[0].solution)
       })
       connection.end()
