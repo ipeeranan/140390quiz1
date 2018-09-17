@@ -4,7 +4,7 @@ var app = express();
 //app.use(express.static('static'));
 app.set('view engine', 'ejs');
 
-app.get('/home', function (req, res) {
+app.get('/', function (req, res) {
     res.render('pages/home');
 });
 
