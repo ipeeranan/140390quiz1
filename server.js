@@ -30,7 +30,7 @@ app.get('/students', function (req, res) {
 });
 app.get('/subject', function (req, res) {
     connection.connect();
-    connection.query('select * from subjects', function (err, rows, fields) {
+    connection.query('select * from subject', function (err, rows, fields) {
         if (err) throw err
         
         res.render('pages/subject',{subject:rows})
