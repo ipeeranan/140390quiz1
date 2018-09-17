@@ -17,7 +17,7 @@ connection.query('SELECT 1 + 1 AS solution', function (err, rows, fields) {
   console.log('The solution is: ', rows[0].solution)
 })
 
-connection.end()
+
 //app.use(express.static('static'));
 app.set('view engine', 'ejs');
 
@@ -31,7 +31,7 @@ app.get('/students', function (req, res) {
 app.get('/subject', function (req, res) {
     res.render('pages/subject');
 });
-
+connection.end()
 
 console.log('App is running at http://localhost:8080');
 app.listen(8080);
