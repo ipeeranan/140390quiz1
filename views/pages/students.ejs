@@ -1,6 +1,30 @@
 <% include ../partials/header %>
 
-
+ <div class="jumbotron">
+            <h1 class="display-3">Hello student</h1>
+           <table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+        </tr>
+    </thead>
+    <tbody>
+       <% student.forEach(function(student){ %> 
+       <tr>
+            <td scope="row"><%= student.sid%></td>
+            <td><%=  student.title%></td>
+            <td><%=  student.firstname%></td>
+             <td><%=  student.lastname%></td>
+        </tr>
+         <% }); %>
+</tbody>
+ 
+    
+</table>
+        </div>  
 
 
 
