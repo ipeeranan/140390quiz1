@@ -28,12 +28,12 @@ app.get('/students', function (req, res) {
       })
       connection.end()
 });
-app.get('/subject', function (req, res) {
+app.get('/subjects', function (req, res) {
     connection.connect();
-    connection.query('select * from subject', function (err, rows, fields) {
+    connection.query('select * from subjects', function (err, rows, fields) {
         if (err) throw err
         
-        res.render('pages/subject',{subject:rows})
+        res.render('pages/subjects',{subjects:rows})
         console.log('The solution is: ', rows[0].solution)
       })
       connection.end()
